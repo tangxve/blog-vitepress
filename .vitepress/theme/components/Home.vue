@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import NewsLetter from './NewsLetter.vue'
 import { load, data, base } from './sponsors'
-import SponsorsGroup from './SponsorsGroup.vue'
-// NOTE: hide the home video
-// https://github.com/vuejs-translations/docs-zh-cn/issues/177
-// import VueMasteryModal from './VueMasteryModal.vue';
 
 onMounted(async () => {
   await load()
@@ -15,11 +10,12 @@ onMounted(async () => {
 <template>
   <section id="hero">
     <h1 class="tagline">
-      <span class="accent">渐进式</span>
-      <br />JavaScript 框架
+      <span>知食呐～</span>
+      <!--<span class="accent">TangXve</span>-->
+      <!--<br />的个人博客-->
     </h1>
     <p class="description">
-      易学易用，性能出色，适用场景丰富的 Web 前端框架。
+      一些记录和沉淀
     </p>
     <p class="actions">
       <!-- NOTE: hide the home video -->
@@ -41,66 +37,6 @@ onMounted(async () => {
       <a class="setup" href="/guide/quick-start.html">安装</a>
     </p>
   </section>
-
-  <section id="special-sponsor">
-    <span>中国区铂金赞助</span>
-    <template v-if="data && data.platinum_china">
-      <template
-        v-for="{
-          url,
-          img,
-          name,
-          height,
-          description
-        } of data.platinum_china"
-      >
-        <a :href="url" target="_blank" rel="sponsored noopener">
-          <picture v-if="img.endsWith('png')">
-            <source
-              type="image/avif"
-              :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
-            />
-            <img
-              :src="`${base}/images/${img}`"
-              :alt="name"
-              :style="{ height: height || '55px' }"
-            />
-          </picture>
-          <img v-else :src="`${base}/images/${img}`" :alt="name" />
-        </a>
-        <!-- <span v-if="description">{{ description }}</span> -->
-      </template>
-    </template>
-  </section>
-
-  <section id="highlights" class="vt-box-container">
-    <div class="vt-box">
-      <h2>易学易用</h2>
-      <p>
-        基于标准 HTML、CSS 和 JavaScript 构建，提供容易上手的 API
-        和一流的文档。
-      </p>
-    </div>
-    <div class="vt-box">
-      <h2>性能出色</h2>
-      <p>经过编译器优化、完全响应式的渲染系统，几乎不需要手动优化。</p>
-    </div>
-    <div class="vt-box">
-      <h2>灵活多变</h2>
-      <p>
-        丰富的、可渐进式集成的生态系统，可以根据应用规模在库和框架间切换自如。
-      </p>
-    </div>
-  </section>
-
-  <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
-    <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
-    <SponsorsGroup tier="gold" placement="landing" />
-  </section>
-
-  <NewsLetter />
 </template>
 
 <style scoped>
