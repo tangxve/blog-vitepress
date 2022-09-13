@@ -17,11 +17,15 @@ export default Object.assign({}, VPTheme, {
   Layout: () => {
     // @ts-ignore
     return h(VPTheme.Layout, null, {
-      // banner: () => h(Banner),
+      // 'banner': () => h(Banner),
+      // 'aside-mid': () => h(SponsorsAside),
+      // 'aside-bottom': () => h(WwAds),
+      'banner': () => h('div', '布局：banner'),
       'navbar-title': () => h('div', 'Tang'),
-      'sidebar-top': () => h(PreferenceSwitch),
-      'aside-mid': () => h(SponsorsAside),
-      'aside-bottom': () => h(WwAds)
+      // 'sidebar-top': () => h(PreferenceSwitch),
+      'aside-top': () => h('div', '布局：aside-top'),
+      'aside-mid': () => h('div', '布局：aside-mid'),
+      'aside-bottom': () => h('div', '布局：aside-bottom')
     })
   },
   enhanceApp({ app }: { app: App }) {

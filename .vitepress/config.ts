@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
-import type { Config as ThemeConfig } from '@vue/theme'
+import type { Config as ThemeConfig, } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 // import { headerPlugin } from './headerMdPlugin'
 // import { jobsPlugin } from './jobsMdPlugin'
@@ -14,12 +14,12 @@ const nav = [
   },
   {
     text: '笔记',
-    activeMatch: `^/api/`,
-    link: '/note'
+    activeMatch: `^/notes/`,
+    link: '/notes/'
   },
   {
     text: '常用软件',
-    link: '/app'
+    link: '/app/'
   },
   {
     text: '前端相关',
@@ -33,7 +33,16 @@ const nav = [
   },
 ]
 
-export const sidebar = {}
+export const sidebar = {
+  '/notes/': [
+    {
+      text: '笔记',
+      items: [
+        {},
+      ]
+    }
+  ]
+}
 
 const i18n = {
   search: '搜索',
@@ -72,7 +81,6 @@ const i18n = {
 }
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
-
   lang: 'zh-CN',
   title: 'Tangxve',
   description: 'Vue.js - 渐进式的 JavaScript 框架',
@@ -88,17 +96,26 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   themeConfig: {
     nav,
-    sidebar,
+    sidebar: {
+      '/notes/': [
+        {
+          text: '笔记',
+          items: [
+            { link: '/notes/fullPagejs同步动画问题', text: 'fullPagejs同步动画问题' },
+          ]
+        }
+      ]
+    },
     i18n,
 
-    algolia: {
-      indexName: 'vuejs_cn2',
-      appId: 'UURH1MHAF7',
-      apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      }
-    },
+    // algolia: {
+    //   indexName: 'vuejs_cn2',
+    //   appId: 'IB1MOMLQ10',
+    //   apiKey: '3af55f3e7bbc437a90e489a6f2d06be9',
+    //   searchParameters: {
+    //     facetFilters: ['version:v3']
+    //   }
+    // },
 
     // carbonAds: {
     //   code: 'CEBDT27Y',
