@@ -3,6 +3,7 @@ import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig, } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
+import { sidebar } from './themeConfig'
 // import { headerPlugin } from './headerMdPlugin'
 // import { jobsPlugin } from './jobsMdPlugin'
 
@@ -33,16 +34,6 @@ const nav = [
   },
 ]
 
-export const sidebar = {
-  '/notes/': [
-    {
-      text: '笔记',
-      items: [
-        {},
-      ]
-    }
-  ]
-}
 
 const i18n = {
   search: '搜索',
@@ -96,16 +87,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   themeConfig: {
     nav,
-    sidebar: {
-      '/notes/': [
-        {
-          text: '笔记',
-          items: [
-            { link: '/notes/fullPagejs同步动画问题', text: 'fullPagejs同步动画问题' },
-          ]
-        }
-      ]
-    },
+    sidebar,
     i18n,
 
     // algolia: {
